@@ -1,8 +1,15 @@
 {
   "name": "sashi-portfolio",
   "version": "1.0.0",
-  "homepage": "https://sashikiranmaddineni7.github.io/sashi-portfolio",
-  "main": "index.js",
+  "private": true,
+  "homepage": "https://yourusername.github.io/sashi-portfolio",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "lucide-react": "^0.263.1",
+    "web-vitals": "^2.1.4"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -11,20 +18,11 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "@react-three/drei": "^10.7.4",
-    "@react-three/fiber": "^9.3.0",
-    "framer-motion": "^12.23.12",
-    "gsap": "^3.13.0",
-    "lucide-react": "^0.514.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-scripts": "^5.0.1",
-    "three": "^0.180.0"
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -39,6 +37,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.0.0"
   }
 }
