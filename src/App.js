@@ -138,7 +138,7 @@ const experience = [
       credential: "AWS-MLP-2024-123456",
       link: "https://www.credly.com/badges/01088d2e-8e5a-4c51-aa53-6858300a0bc9/public_url",
       icon: <Award className="w-5 h-5" />,
-      color: "from-orange-400 to-red-500"
+      color: "from-emerald-400 to-teal-500"
     },
     {
       title: "Oracle Cloud Infrastructure Generative AI Professional",
@@ -147,7 +147,7 @@ const experience = [
       credential: "OCI-GAI-2023-004321",
       link: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=1325C6B8A4B72A002076BD89C9E8A2AFAEF7584B0F07E2128BCA36A648B35F3E",
       icon: <Database className="w-5 h-5" />,
-      color: "from-red-400 to-orange-500"
+      color: "from-orange-400 to-red-500"
     },
     {
       title: "IBM Certified Data Scientist Professional",
@@ -156,7 +156,7 @@ const experience = [
       credential: "IBM-DS-2024-009012",
       link: "#",
       icon: <Brain className="w-5 h-5" />,
-      color: "from-blue-400 to-indigo-500"
+      color: "from-purple-400 to-pink-500"
     },
     {
       title: "Certified Analytics Professional (CAP)",
@@ -165,7 +165,7 @@ const experience = [
       credential: "CAP-2022-003456",
       link: "#",
       icon: <BarChart3 className="w-5 h-5" />,
-      color: "from-green-400 to-teal-500"
+      color: "from-cyan-400 to-blue-500"
     },
   ];
 
@@ -196,7 +196,7 @@ const experience = [
         * { font-family: 'Inter', sans-serif; }
         
         .gradient-text {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(135deg, #10b981 0%, #f59e0b 50%, #ef4444 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -308,7 +308,7 @@ const experience = [
                 onClick={toggleTheme}
                 className={`p-3 rounded-full transition-all duration-300 hover:scale-110 ${theme.bg.card} ${theme.border.primary} border`}
               >
-                {isDarkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-blue-600" />}
+                {isDarkMode ? <Sun className="w-5 h-5 text-yellow-400" /> : <Moon className="w-5 h-5 text-emerald-600" />}
               </button>
             </div>
 
@@ -354,7 +354,7 @@ const experience = [
                     </>
                   ) : (
                     <>
-                      <Moon className="w-4 h-4 text-blue-600" />
+                      <Moon className="w-4 h-4 text-emerald-600" />
                       Dark Mode
                     </>
                   )}
@@ -372,7 +372,7 @@ const experience = [
             {/* Profile Image */}
             <div className="mb-25 flex justify-center">
               <div className="relative inline-block animate-fade-in">
-                <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-blue-400 to-purple-500 p-1 shadow-2xl">
+                <div className="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-emerald-400 to-orange-500 p-1 shadow-2xl">
                   <img 
                   src={process.env.PUBLIC_URL + '/Images/Myimage.jpeg'}        
                   alt="Sashi Kiran"
@@ -383,7 +383,7 @@ const experience = [
                   }}
                 />
                <div className={`w-full h-full rounded-full ${theme.bg.card} items-center justify-center hidden`}>
-                <User className="w-20 h-20 text-blue-500" />
+                <User className="w-20 h-20 text-emerald-500" />
                 </div>
               </div>
   </div>
@@ -401,7 +401,7 @@ const experience = [
               
               <div className="slide-up stagger-2">
                 <p className={`text-xl lg:text-2xl ${theme.text.secondary} max-w-3xl mx-auto leading-relaxed`}>
-                  AI/ML Engineer with <span className="font-semibold text-blue-500">3+ years</span> of experience 
+                  AI/ML Engineer with <span className="font-semibold text-emerald-500">3+ years</span> of experience 
                   transforming complex data challenges into scalable AI solutions
                 </p>
               </div>
@@ -417,7 +417,7 @@ const experience = [
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center slide-up stagger-4">
                 <button
                   onClick={() => scrollToSection('projects')}
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold hover:scale-105 transition-all shadow-lg hover:shadow-xl"
+                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-orange-500 text-white rounded-full font-semibold hover:scale-105 transition-all shadow-lg hover:shadow-xl"
                 >
                   View My Work
                   <ArrowRight className="w-5 h-5" />
@@ -439,7 +439,7 @@ const experience = [
             <div className={`space-y-8 ${visibleElements.has('about') ? 'animate-slide-left' : 'animate-on-scroll'}`}>
               <div>
                 <h2 className={`text-5xl font-bold mb-6 gradient-text ${visibleElements.has('about') ? 'animate-slide-up' : 'animate-on-scroll'}`}>About Me</h2>
-                <div className={`w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-8 ${visibleElements.has('about') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
+                <div className={`w-20 h-1 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full mb-8 ${visibleElements.has('about') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
               </div>
               
               <p className={`text-lg ${theme.text.secondary} leading-relaxed ${visibleElements.has('about') ? 'animate-fade-in' : 'animate-on-scroll'}`}>
@@ -480,7 +480,7 @@ const experience = [
                 { icon: BarChart3, title: 'Analytics', desc: 'Statistical analysis and business insights' }
               ].map((item, idx) => (
                 <div key={item.title} className={`${theme.bg.card} p-6 rounded-2xl ${theme.border.primary} border card-hover shadow-lg ${visibleElements.has('about') ? `animate-slide-up stagger-${(idx % 4) + 1}` : 'animate-on-scroll'}`}>
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-lg flex items-center justify-center mb-4">
                     <item.icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className={`font-semibold mb-2 ${theme.text.primary}`}>{item.title}</h3>
@@ -497,7 +497,7 @@ const experience = [
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className={`text-5xl font-bold mb-6 gradient-text ${visibleElements.has('skills') ? 'animate-slide-up' : 'animate-on-scroll'}`}>Skills & Expertise</h2>
-            <div className={`w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-8 ${visibleElements.has('skills') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
+            <div className={`w-20 h-1 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full mx-auto mb-8 ${visibleElements.has('skills') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
             <p className={`text-xl ${theme.text.secondary} max-w-2xl mx-auto ${visibleElements.has('skills') ? 'animate-fade-in' : 'animate-on-scroll'}`}>
               Comprehensive technical skills across the modern data science and machine learning stack
             </p>
@@ -511,11 +511,11 @@ const experience = [
                     <h3 className={`font-semibold text-lg ${theme.text.primary}`}>{skill.name}</h3>
                     <p className={`text-sm ${theme.text.muted}`}>{skill.category}</p>
                   </div>
-                  <span className="text-2xl font-bold text-blue-500">{skill.level}%</span>
+                  <span className="text-2xl font-bold text-emerald-500">{skill.level}%</span>
                 </div>
                 <div className={`w-full ${isDarkMode ? 'bg-gray-700' : 'bg-gray-200'} rounded-full h-3`}>
                   <div 
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full skill-bar"
+                    className="bg-gradient-to-r from-emerald-500 to-orange-500 h-3 rounded-full skill-bar"
                     style={{ 
                       width: visibleElements.has('skills') ? `${skill.level}%` : '0%',
                       transitionDelay: `${index * 0.1}s`
@@ -533,7 +533,7 @@ const experience = [
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className={`text-5xl font-bold mb-6 gradient-text ${visibleElements.has('projects') ? 'animate-slide-up' : 'animate-on-scroll'}`}>Featured Projects</h2>
-            <div className={`w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-8 ${visibleElements.has('projects') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
+            <div className={`w-20 h-1 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full mx-auto mb-8 ${visibleElements.has('projects') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
@@ -543,7 +543,7 @@ const experience = [
                   <div className="flex justify-between items-start mb-4">
                     <div>
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-medium rounded-full">
+                        <span className="px-3 py-1 bg-gradient-to-r from-emerald-500 to-orange-500 text-white text-xs font-medium rounded-full">
                           {project.status}
                         </span>
                         <span className={`text-sm ${theme.text.muted}`}>{project.year}</span>
@@ -551,7 +551,7 @@ const experience = [
                       <h3 className={`text-2xl font-bold ${theme.text.primary} mb-2`}>{project.title}</h3>
                       <p className={`text-sm ${theme.text.muted} mb-4`}>{project.category}</p>
                     </div>
-                    <ExternalLink className="w-6 h-6 text-blue-500 group-hover:scale-110 transition-transform" />
+                    <ExternalLink className="w-6 h-6 text-emerald-500 group-hover:scale-110 transition-transform" />
                   </div>
                   
                   <p className={`${theme.text.secondary} leading-relaxed mb-6`}>{project.description}</p>
@@ -575,7 +575,7 @@ const experience = [
   <div className="max-w-6xl mx-auto px-6 lg:px-8">
     <div className="text-center mb-20">
       <h2 className={`text-5xl font-bold mb-6 gradient-text ${visibleElements.has('experience') ? 'animate-slide-up' : 'animate-on-scroll'}`}>Experience</h2>
-      <div className={`w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto ${visibleElements.has('experience') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
+      <div className={`w-20 h-1 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full mx-auto ${visibleElements.has('experience') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
     </div>
 
     <div className="space-y-8">
@@ -585,7 +585,7 @@ const experience = [
             <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4">
               <div>
                 <h3 className={`text-xl font-bold ${theme.text.primary} mb-1`}>{exp.title}</h3>
-                <p className="text-blue-500 font-semibold mb-2">{exp.company}</p>
+                <p className="text-emerald-500 font-semibold mb-2">{exp.company}</p>
               </div>
               <span className={`text-sm ${theme.text.muted} lg:text-right`}>{exp.period}</span>
             </div>
@@ -609,7 +609,7 @@ const experience = [
         <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className={`text-5xl font-bold mb-6 gradient-text ${visibleElements.has('certifications') ? 'animate-slide-up' : 'animate-on-scroll'}`}>Certifications</h2>
-            <div className={`w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto ${visibleElements.has('certifications') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
+            <div className={`w-20 h-1 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full mx-auto ${visibleElements.has('certifications') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -631,7 +631,7 @@ const experience = [
                         href={cert.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-blue-500 hover:text-blue-600 font-medium text-sm hover:underline transition-colors"
+                        className="text-emerald-500 hover:text-emerald-600 font-medium text-sm hover:underline transition-colors"
                       >
                         View Badge →
                       </a>
@@ -648,7 +648,7 @@ const experience = [
       <section id="contact" className="py-32" data-animate>
         <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
           <h2 className={`text-5xl font-bold mb-6 gradient-text ${visibleElements.has('contact') ? 'animate-slide-up' : 'animate-on-scroll'}`}>Let's Connect</h2>
-          <div className={`w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mx-auto mb-8 ${visibleElements.has('contact') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
+          <div className={`w-20 h-1 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full mx-auto mb-8 ${visibleElements.has('contact') ? 'animate-scale-in' : 'animate-on-scroll'}`}></div>
           <p className={`text-xl ${theme.text.secondary} mb-16 max-w-2xl mx-auto ${visibleElements.has('contact') ? 'animate-fade-in' : 'animate-on-scroll'}`}>
             Ready to collaborate on innovative ML projects? Let's discuss how we can solve complex data challenges together.
           </p>
@@ -660,7 +660,7 @@ const experience = [
               { icon: MapPin, title: 'Location', info: 'United States', href: '#' }
             ].map((contact, idx) => (
               <a key={contact.title} href={contact.href} className={`${theme.bg.card} p-8 rounded-2xl ${theme.border.primary} border card-hover shadow-lg block ${visibleElements.has('contact') ? `animate-slide-up stagger-${(idx % 4) + 1}` : 'animate-on-scroll'}`}>
-                <contact.icon className={`w-8 h-8 mx-auto mb-4 text-blue-500`} />
+                <contact.icon className={`w-8 h-8 mx-auto mb-4 text-emerald-500`} />
                 <h3 className={`font-semibold mb-2 ${theme.text.primary}`}>{contact.title}</h3>
                 <p className={`${theme.text.muted} text-sm`}>{contact.info}</p>
               </a>
@@ -668,10 +668,10 @@ const experience = [
           </div>
 
           <div className={`flex justify-center gap-6 ${visibleElements.has('contact') ? 'animate-scale-in' : 'animate-on-scroll'}`}>
-            <a href="#" className="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all shadow-lg">
+            <a href="#" className="w-14 h-14 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all shadow-lg">
               <Github className="w-6 h-6" />
             </a>
-            <a href="#" className="w-14 h-14 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all shadow-lg">
+            <a href="#" className="w-14 h-14 bg-gradient-to-r from-emerald-500 to-orange-500 rounded-full flex items-center justify-center text-white hover:scale-110 transition-all shadow-lg">
               <Linkedin className="w-6 h-6" />
             </a>
           </div>
