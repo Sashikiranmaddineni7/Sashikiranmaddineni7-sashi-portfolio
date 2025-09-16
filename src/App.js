@@ -189,7 +189,18 @@ const experience = [
   };
 
   return (
-    <div className={`min-h-screen transition-all duration-300 ${theme.bg.primary} ${theme.text.primary}`}>
+    <div className={`min-h-screen transition-all duration-300 ${theme.bg.primary} ${theme.text.primary} mesh-background`}>
+      {/* Lightning Background */}
+      <div className="lightning-bg">
+        <div className="lightning lightning-1"></div>
+        <div className="lightning lightning-2"></div>
+        <div className="lightning lightning-3"></div>
+        <div className="lightning lightning-4"></div>
+        <div className="lightning lightning-5"></div>
+        <div className="lightning lightning-6"></div>
+        <div className="lightning lightning-7"></div>
+        <div className="lightning lightning-8"></div>
+      </div>
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
         
@@ -259,17 +270,121 @@ const experience = [
         .animate-visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease-out; }
 
         .mesh-background {
-        background-color: ${isDarkMode ? '#111827' : '#ffffff'};
+        background-color: ${isDarkMode ? '#0f0f0f' : '#ffffff'};
         background-image: 
-      radial-gradient(at 40% 20%, ${isDarkMode ? 'rgba(245, 158, 11, 0.08)' : 'rgba(245, 158, 11, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 80% 0%, ${isDarkMode ? 'rgba(234, 179, 8, 0.08)' : 'rgba(234, 179, 8, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 0% 50%, ${isDarkMode ? 'rgba(249, 115, 22, 0.08)' : 'rgba(249, 115, 22, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 80% 50%, ${isDarkMode ? 'rgba(245, 158, 11, 0.08)' : 'rgba(245, 158, 11, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 0% 100%, ${isDarkMode ? 'rgba(234, 179, 8, 0.08)' : 'rgba(234, 179, 8, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 80% 100%, ${isDarkMode ? 'rgba(249, 115, 22, 0.08)' : 'rgba(249, 115, 22, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 0% 0%, ${isDarkMode ? 'rgba(245, 158, 11, 0.08)' : 'rgba(245, 158, 11, 0.1)'} 0px, transparent 50%);
-    background-size: 200% 200%;
-    animation: meshGradient 15s ease-in-out infinite;
+      radial-gradient(at 20% 30%, ${isDarkMode ? 'rgba(255, 215, 0, 0.15)' : 'rgba(255, 215, 0, 0.1)'} 0px, transparent 50%),
+      radial-gradient(at 80% 20%, ${isDarkMode ? 'rgba(255, 165, 0, 0.12)' : 'rgba(255, 165, 0, 0.08)'} 0px, transparent 50%),
+      radial-gradient(at 40% 70%, ${isDarkMode ? 'rgba(255, 140, 0, 0.18)' : 'rgba(255, 140, 0, 0.1)'} 0px, transparent 50%),
+      radial-gradient(at 90% 80%, ${isDarkMode ? 'rgba(255, 215, 0, 0.1)' : 'rgba(255, 215, 0, 0.06)'} 0px, transparent 50%),
+      radial-gradient(at 10% 90%, ${isDarkMode ? 'rgba(255, 165, 0, 0.14)' : 'rgba(255, 165, 0, 0.08)'} 0px, transparent 50%),
+      radial-gradient(at 60% 10%, ${isDarkMode ? 'rgba(255, 140, 0, 0.16)' : 'rgba(255, 140, 0, 0.09)'} 0px, transparent 50%);
+    background-size: 300% 300%;
+    animation: meshGradient 20s ease-in-out infinite;
+  }
+
+  .lightning-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: ${isDarkMode ? '0.85' : '0.18'};
+  }
+
+  .lightning {
+    position: absolute;
+    background: ${isDarkMode
+      ? 'linear-gradient(45deg, #fff59e, #ffd700, #ffb300)'
+      : 'linear-gradient(45deg, #9ca3af, #6b7280, #4b5563)'};
+    border-radius: 2px;
+    animation: lightning 3s infinite;
+    box-shadow: ${isDarkMode
+      ? '0 0 6px 2px rgba(255, 215, 0, 0.7), 0 0 18px 6px rgba(255, 165, 0, 0.35)'
+      : '0 0 4px 1px rgba(55, 65, 81, 0.25)'};
+    mix-blend-mode: ${isDarkMode ? 'screen' : 'multiply'};
+  }
+
+  .lightning-1 {
+    width: 3px;
+    height: 200px;
+    top: 10%;
+    left: 15%;
+    animation-delay: 0s;
+    animation-duration: 2.6s;
+  }
+
+  .lightning-2 {
+    width: 2px;
+    height: 150px;
+    top: 20%;
+    right: 20%;
+    animation-delay: 1s;
+    animation-duration: 3.4s;
+  }
+
+  .lightning-3 {
+    width: 4px;
+    height: 180px;
+    top: 60%;
+    left: 25%;
+    animation-delay: 2s;
+    animation-duration: 2.2s;
+  }
+
+  .lightning-4 {
+    width: 2px;
+    height: 120px;
+    top: 40%;
+    right: 30%;
+    animation-delay: 0.5s;
+    animation-duration: 3s;
+  }
+
+  .lightning-5 {
+    width: 3px;
+    height: 160px;
+    top: 80%;
+    left: 60%;
+    animation-delay: 1.5s;
+    animation-duration: 2.8s;
+  }
+
+  .lightning-6 {
+    width: 2px;
+    height: 140px;
+    top: 30%;
+    right: 10%;
+    animation-delay: 2.5s;
+    animation-duration: 3.6s;
+  }
+
+  .lightning-7 {
+    width: 3px;
+    height: 100px;
+    top: 70%;
+    left: 80%;
+    animation-delay: 0.8s;
+    animation-duration: 2.4s;
+  }
+
+  .lightning-8 {
+    width: 2px;
+    height: 130px;
+    top: 15%;
+    left: 70%;
+    animation-delay: 1.8s;
+    animation-duration: 3.2s;
+  }
+
+  @keyframes lightning {
+    0%, 92%, 100% { opacity: 0; transform: scaleY(0) translateY(-4px); }
+    4% { opacity: 1; transform: scaleY(1) translateY(0); }
+    6% { opacity: 0.4; transform: scaleY(0.95) translateY(-2px); }
+    8% { opacity: 1; transform: scaleY(1.05) translateY(0); }
+    12%, 88% { opacity: 0; transform: scaleY(0.9) translateY(4px); }
+    84% { opacity: 0.9; transform: scaleY(1) translateY(0); }
   }
 
   @keyframes meshGradient {
