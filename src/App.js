@@ -43,24 +43,39 @@ const Portfolio = () => {
 
   // Realistic Lightning Class
   useEffect(() => {
-    class RealisticLightning {
-      constructor() {
-        this.svg = document.querySelector('.lightning-svg');
-        this.isActive = true;
-        this.lightningBolts = [];
-        this.stormMode = false;
-        this.init();
-      }
+    // Add delay to ensure DOM is fully rendered
+    const initLightning = () => {
+      class RealisticLightning {
+        constructor() {
+          this.svg = document.querySelector('.lightning-svg');
+          this.isActive = true;
+          this.lightningBolts = [];
+          this.stormMode = false;
+          this.init();
+        }
 
       init() {
         if (!this.svg) {
-          console.log('SVG not found!');
+          console.log('SVG not found, retrying...');
+          // Retry after a short delay
+          setTimeout(() => {
+            this.svg = document.querySelector('.lightning-svg');
+            if (this.svg) {
+              console.log('SVG found on retry, initializing...');
+              this.startLightning();
+            } else {
+              console.log('SVG still not found after retry');
+            }
+          }, 500);
           return;
         }
         console.log('Lightning SVG found, initializing...');
-        
-        // Start with initial lightning
-        setTimeout(() => this.createInitialLightning(), 2000);
+        this.startLightning();
+      }
+
+      startLightning() {
+        // Start with initial lightning immediately
+        this.createInitialLightning();
         
         // Start random lightning generation
         this.startRandomLightning();
@@ -252,27 +267,29 @@ const Portfolio = () => {
             this.createRandomLightning();
           }
           
-          // Schedule next lightning (8-15 seconds)
-          const nextStrike = 8000 + Math.random() * 7000;
-          setTimeout(createRandom, nextStrike);
+        // Schedule next lightning (3-8 seconds)
+        const nextStrike = 3000 + Math.random() * 5000;
+        setTimeout(createRandom, nextStrike);
         };
         
         // Start after initial lightning
-        setTimeout(createRandom, 12000);
+        setTimeout(createRandom, 5000);
       }
     }
 
-    // Initialize lightning
-    const lightning = new RealisticLightning();
-    console.log('Lightning initialized:', lightning);
+    // Initialize lightning with delay
+    const timeoutId = setTimeout(() => {
+      const lightning = new RealisticLightning();
+      console.log('Lightning initialized:', lightning);
+    }, 1000);
 
     // Cleanup on unmount
     return () => {
-      if (lightning) {
-        lightning.isActive = false;
-        lightning.lightningBolts.forEach(bolt => lightning.removeLightningBolt(bolt));
-      }
+      clearTimeout(timeoutId);
     };
+    };
+
+    initLightning();
   }, [isDarkMode]);
 
     const scrollToSection = (sectionId) => {
