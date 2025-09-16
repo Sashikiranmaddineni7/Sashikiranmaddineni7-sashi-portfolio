@@ -539,8 +539,8 @@ const experience = [
   }
 
   .lightning-bolt {
-    stroke: rgba(255, 215, 0, 0.9);
-    stroke-width: 3;
+    stroke: rgba(255, 255, 0, 1);
+    stroke-width: 4;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -549,8 +549,8 @@ const experience = [
   }
 
   .lightning-branch {
-    stroke: rgba(255, 215, 0, 0.7);
-    stroke-width: 1.5;
+    stroke: rgba(255, 255, 0, 0.8);
+    stroke-width: 2;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -565,20 +565,20 @@ const experience = [
     }
     1%, 3% {
       opacity: 1;
-      stroke: rgba(255, 255, 255, 0.95);
-      stroke-width: 5;
+      stroke: rgba(255, 255, 255, 1);
+      stroke-width: 8;
     }
     2% {
       opacity: 0.9;
-      stroke-width: 4;
+      stroke-width: 6;
     }
     4%, 6% {
       opacity: 0.6;
-      stroke-width: 3;
+      stroke-width: 4;
     }
     5% {
       opacity: 0.8;
-      stroke-width: 3.5;
+      stroke-width: 5;
     }
   }
 
@@ -589,16 +589,16 @@ const experience = [
     }
     1.5%, 3.5% {
       opacity: 0.8;
-      stroke: rgba(255, 255, 255, 0.8);
-      stroke-width: 2.5;
+      stroke: rgba(255, 255, 255, 0.9);
+      stroke-width: 4;
     }
     2.5% {
       opacity: 0.7;
-      stroke-width: 2;
+      stroke-width: 3;
     }
     4.5% {
       opacity: 0.4;
-      stroke-width: 1.5;
+      stroke-width: 2;
     }
   }
 
