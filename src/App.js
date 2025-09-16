@@ -41,6 +41,228 @@ const Portfolio = () => {
     };
   }, []);
 
+  // Realistic Lightning Class
+  useEffect(() => {
+    class RealisticLightning {
+      constructor() {
+        this.svg = document.querySelector('.lightning-svg');
+        this.isActive = true;
+        this.lightningBolts = [];
+        this.stormMode = false;
+        this.init();
+      }
+
+      init() {
+        if (!this.svg) return;
+        this.startRandomLightning();
+        
+        // Create initial demonstration strikes
+        setTimeout(() => this.createDemoStrikes(), 2000);
+      }
+
+      // Generate realistic jagged lightning path
+      generateLightningPath(startX, startY, endX, endY, segments = 12) {
+        let path = `M ${startX} ${startY}`;
+        
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        
+        for (let i = 1; i <= segments; i++) {
+          const progress = i / segments;
+          const baseX = startX + deltaX * progress;
+          const baseY = startY + deltaY * progress;
+          
+          // Add realistic jaggedness
+          const maxOffset = 40 + Math.random() * 60;
+          const offsetX = (Math.random() - 0.5) * maxOffset;
+          const offsetY = (Math.random() - 0.5) * (maxOffset * 0.2);
+          
+          const x = Math.max(0, Math.min(window.innerWidth, baseX + offsetX));
+          const y = Math.max(0, baseY + offsetY);
+          
+          path += ` L ${x} ${y}`;
+        }
+        
+        path += ` L ${endX} ${endY}`;
+        return path;
+      }
+
+      // Generate multiple branches from main bolt
+      generateBranches(mainPath, numBranches = 3) {
+        const branches = [];
+        
+        for (let i = 0; i < numBranches; i++) {
+          const branchPoint = 0.2 + Math.random() * 0.6;
+          const point = this.getPointAtProgress(mainPath, branchPoint);
+          
+          if (point) {
+            const branchLength = 80 + Math.random() * 120;
+            const angle = (Math.random() - 0.5) * Math.PI * 1.2;
+            
+            const endX = Math.max(0, Math.min(window.innerWidth, point.x + Math.cos(angle) * branchLength));
+            const endY = Math.max(0, point.y + Math.sin(angle) * branchLength);
+            
+            const branchPath = this.generateLightningPath(
+              point.x, point.y, endX, endY, 4 + Math.floor(Math.random() * 4)
+            );
+            branches.push(branchPath);
+          }
+        }
+        
+        return branches;
+      }
+
+      // Get point at progress along path
+      getPointAtProgress(pathString, progress) {
+        const coords = pathString.match(/[\d.-]+/g);
+        if (!coords || coords.length < 4) return null;
+        
+        const points = [];
+        for (let i = 0; i < coords.length; i += 2) {
+          points.push({
+            x: parseFloat(coords[i]),
+            y: parseFloat(coords[i + 1])
+          });
+        }
+        
+        const targetIndex = Math.floor((points.length - 1) * progress);
+        const remainder = (points.length - 1) * progress - targetIndex;
+        
+        if (targetIndex >= points.length - 1) return points[points.length - 1];
+        
+        const p1 = points[targetIndex];
+        const p2 = points[targetIndex + 1];
+        
+        return {
+          x: p1.x + (p2.x - p1.x) * remainder,
+          y: p1.y + (p2.y - p1.y) * remainder
+        };
+      }
+
+      // Create complete lightning bolt with branches
+      createLightningBolt(startX, startY, endX, endY, duration = 5) {
+        // Generate main lightning path
+        const mainPath = this.generateLightningPath(startX, startY, endX, endY, 10 + Math.floor(Math.random() * 8));
+        
+        // Create main bolt
+        const mainBolt = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        mainBolt.setAttribute('d', mainPath);
+        mainBolt.setAttribute('class', 'lightning-bolt');
+        mainBolt.style.animation = `lightning-flash ${duration}s ease-in-out`;
+        
+        this.svg.appendChild(mainBolt);
+        
+        // Generate branches
+        const numBranches = 1 + Math.floor(Math.random() * 4);
+        const branches = this.generateBranches(mainPath, numBranches);
+        const branchElements = [];
+        
+        branches.forEach((branchPath, index) => {
+          const branch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          branch.setAttribute('d', branchPath);
+          branch.setAttribute('class', 'lightning-branch');
+          branch.style.animation = `branch-flash ${duration}s ease-in-out`;
+          branch.style.animationDelay = `${0.1 + index * 0.05}s`;
+          
+          this.svg.appendChild(branch);
+          branchElements.push(branch);
+        });
+        
+        const lightningGroup = {
+          main: mainBolt,
+          branches: branchElements,
+          duration: duration * 1000
+        };
+        
+        this.lightningBolts.push(lightningGroup);
+        
+        // Clean up after animation
+        setTimeout(() => {
+          this.removeLightningBolt(lightningGroup);
+        }, duration * 1000 + 500);
+        
+        return lightningGroup;
+      }
+
+      // Remove lightning bolt
+      removeLightningBolt(lightningGroup) {
+        if (lightningGroup.main.parentNode) {
+          lightningGroup.main.parentNode.removeChild(lightningGroup.main);
+        }
+        
+        lightningGroup.branches.forEach(branch => {
+          if (branch.parentNode) {
+            branch.parentNode.removeChild(branch);
+          }
+        });
+        
+        const index = this.lightningBolts.indexOf(lightningGroup);
+        if (index > -1) {
+          this.lightningBolts.splice(index, 1);
+        }
+      }
+
+      // Create demo strikes
+      createDemoStrikes() {
+        const strikes = [
+          { delay: 0, pos: [0.2, 0.7] },
+          { delay: 3000, pos: [0.6, 0.8] },
+          { delay: 6000, pos: [0.9, 0.6] }
+        ];
+        
+        strikes.forEach(strike => {
+          setTimeout(() => {
+            if (this.isActive) {
+              const startX = strike.pos[0] * window.innerWidth;
+              const startY = 0;
+              const endX = startX + (Math.random() - 0.5) * 100;
+              const endY = strike.pos[1] * window.innerHeight;
+              
+              this.createLightningBolt(startX, startY, endX, endY);
+            }
+          }, strike.delay);
+        });
+      }
+
+      // Create random lightning
+      createRandomLightning() {
+        if (!this.isActive) return;
+        
+        const startX = Math.random() * window.innerWidth;
+        const startY = -20;
+        const endX = startX + (Math.random() - 0.5) * 200;
+        const endY = 200 + Math.random() * (window.innerHeight * 0.6);
+        
+        this.createLightningBolt(startX, startY, endX, endY, 4 + Math.random() * 3);
+      }
+
+      // Start random lightning
+      startRandomLightning() {
+        const createRandom = () => {
+          if (this.isActive && !this.stormMode) {
+            this.createRandomLightning();
+          }
+          
+          const nextStrike = this.stormMode ? 500 + Math.random() * 1000 : 8000 + Math.random() * 12000;
+          setTimeout(createRandom, nextStrike);
+        };
+        
+        setTimeout(createRandom, 10000);
+      }
+    }
+
+    // Initialize lightning
+    const lightning = new RealisticLightning();
+
+    // Cleanup on unmount
+    return () => {
+      if (lightning) {
+        lightning.isActive = false;
+        lightning.lightningBolts.forEach(bolt => lightning.removeLightningBolt(bolt));
+      }
+    };
+  }, [isDarkMode]);
+
     const scrollToSection = (sectionId) => {
     setIsMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(sectionId);
@@ -190,16 +412,26 @@ const experience = [
 
   return (
     <div className={`min-h-screen transition-all duration-300 ${theme.bg.primary} ${theme.text.primary} mesh-background`}>
-      {/* Lightning Background */}
-      <div className="lightning-bg">
-        <div className="lightning lightning-1"></div>
-        <div className="lightning lightning-2"></div>
-        <div className="lightning lightning-3"></div>
-        <div className="lightning lightning-4"></div>
-        <div className="lightning lightning-5"></div>
-        <div className="lightning lightning-6"></div>
-        <div className="lightning lightning-7"></div>
-        <div className="lightning lightning-8"></div>
+      {/* Realistic Lightning Background */}
+      <div className="thunder-container">
+        <svg className="lightning-svg" width="100%" height="100%">
+          <defs>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/> 
+              </feMerge>
+            </filter>
+            <filter id="intense-glow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/> 
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
       </div>
       <style jsx>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -270,121 +502,92 @@ const experience = [
         .animate-visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease-out; }
 
         .mesh-background {
-        background-color: ${isDarkMode ? '#0f0f0f' : '#ffffff'};
+        background-color: ${isDarkMode ? '#0a0a0a' : '#f5f5f5'};
         background-image: 
-      radial-gradient(at 20% 30%, ${isDarkMode ? 'rgba(255, 215, 0, 0.15)' : 'rgba(255, 215, 0, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 80% 20%, ${isDarkMode ? 'rgba(255, 165, 0, 0.12)' : 'rgba(255, 165, 0, 0.08)'} 0px, transparent 50%),
-      radial-gradient(at 40% 70%, ${isDarkMode ? 'rgba(255, 140, 0, 0.18)' : 'rgba(255, 140, 0, 0.1)'} 0px, transparent 50%),
-      radial-gradient(at 90% 80%, ${isDarkMode ? 'rgba(255, 215, 0, 0.1)' : 'rgba(255, 215, 0, 0.06)'} 0px, transparent 50%),
-      radial-gradient(at 10% 90%, ${isDarkMode ? 'rgba(255, 165, 0, 0.14)' : 'rgba(255, 165, 0, 0.08)'} 0px, transparent 50%),
-      radial-gradient(at 60% 10%, ${isDarkMode ? 'rgba(255, 140, 0, 0.16)' : 'rgba(255, 140, 0, 0.09)'} 0px, transparent 50%);
-    background-size: 300% 300%;
-    animation: meshGradient 20s ease-in-out infinite;
-  }
+      radial-gradient(ellipse at center, ${isDarkMode ? '#0a0a0a' : '#f5f5f5'} 0%, ${isDarkMode ? '#000000' : '#e5e5e5'} 100%);
+    }
 
-  .lightning-bg {
+  .thunder-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     pointer-events: none;
     z-index: -1;
-    opacity: ${isDarkMode ? '0.85' : '0.18'};
+    overflow: hidden;
   }
 
-  .lightning {
+  .lightning-svg {
     position: absolute;
-    background: ${isDarkMode
-      ? 'linear-gradient(45deg, #fff59e, #ffd700, #ffb300)'
-      : 'linear-gradient(45deg, #9ca3af, #6b7280, #4b5563)'};
-    border-radius: 2px;
-    animation: lightning 3s infinite;
-    box-shadow: ${isDarkMode
-      ? '0 0 6px 2px rgba(255, 215, 0, 0.7), 0 0 18px 6px rgba(255, 165, 0, 0.35)'
-      : '0 0 4px 1px rgba(55, 65, 81, 0.25)'};
-    mix-blend-mode: ${isDarkMode ? 'screen' : 'multiply'};
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
-  .lightning-1 {
-    width: 3px;
-    height: 200px;
-    top: 10%;
-    left: 15%;
-    animation-delay: 0s;
-    animation-duration: 2.6s;
+  .lightning-bolt {
+    stroke: ${isDarkMode ? 'rgba(255, 255, 150, 1)' : 'rgba(70, 70, 70, 0.9)'};
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: url(#glow);
+    opacity: 0;
   }
 
-  .lightning-2 {
-    width: 2px;
-    height: 150px;
-    top: 20%;
-    right: 20%;
-    animation-delay: 1s;
-    animation-duration: 3.4s;
+  .lightning-branch {
+    stroke: ${isDarkMode ? 'rgba(255, 255, 150, 1)' : 'rgba(70, 70, 70, 0.9)'};
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    filter: url(#glow);
+    opacity: 0;
   }
 
-  .lightning-3 {
-    width: 4px;
-    height: 180px;
-    top: 60%;
-    left: 25%;
-    animation-delay: 2s;
-    animation-duration: 2.2s;
+  @keyframes lightning-flash {
+    0%, 85%, 100% {
+      opacity: 0;
+      stroke-width: 2;
+    }
+    1%, 3% {
+      opacity: 1;
+      stroke: ${isDarkMode ? 'rgba(255, 255, 255, 0.9)' : 'rgba(100, 100, 100, 0.6)'};
+      stroke-width: 5;
+    }
+    2% {
+      opacity: 0.9;
+      stroke-width: 4;
+    }
+    4%, 6% {
+      opacity: 0.6;
+      stroke-width: 3;
+    }
+    5% {
+      opacity: 0.8;
+      stroke-width: 3.5;
+    }
   }
 
-  .lightning-4 {
-    width: 2px;
-    height: 120px;
-    top: 40%;
-    right: 30%;
-    animation-delay: 0.5s;
-    animation-duration: 3s;
-  }
-
-  .lightning-5 {
-    width: 3px;
-    height: 160px;
-    top: 80%;
-    left: 60%;
-    animation-delay: 1.5s;
-    animation-duration: 2.8s;
-  }
-
-  .lightning-6 {
-    width: 2px;
-    height: 140px;
-    top: 30%;
-    right: 10%;
-    animation-delay: 2.5s;
-    animation-duration: 3.6s;
-  }
-
-  .lightning-7 {
-    width: 3px;
-    height: 100px;
-    top: 70%;
-    left: 80%;
-    animation-delay: 0.8s;
-    animation-duration: 2.4s;
-  }
-
-  .lightning-8 {
-    width: 2px;
-    height: 130px;
-    top: 15%;
-    left: 70%;
-    animation-delay: 1.8s;
-    animation-duration: 3.2s;
-  }
-
-  @keyframes lightning {
-    0%, 92%, 100% { opacity: 0; transform: scaleY(0) translateY(-4px); }
-    4% { opacity: 1; transform: scaleY(1) translateY(0); }
-    6% { opacity: 0.4; transform: scaleY(0.95) translateY(-2px); }
-    8% { opacity: 1; transform: scaleY(1.05) translateY(0); }
-    12%, 88% { opacity: 0; transform: scaleY(0.9) translateY(4px); }
-    84% { opacity: 0.9; transform: scaleY(1) translateY(0); }
+  @keyframes branch-flash {
+    0%, 85%, 100% {
+      opacity: 0;
+      stroke-width: 1;
+    }
+    1.5%, 3.5% {
+      opacity: 0.8;
+      stroke: ${isDarkMode ? 'rgba(255, 255, 255, 0.9)' : 'rgba(100, 100, 100, 0.6)'};
+      stroke-width: 2.5;
+    }
+    2.5% {
+      opacity: 0.7;
+      stroke-width: 2;
+    }
+    4.5% {
+      opacity: 0.4;
+      stroke-width: 1.5;
+    }
   }
 
   @keyframes meshGradient {
