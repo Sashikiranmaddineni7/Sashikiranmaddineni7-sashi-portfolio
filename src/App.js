@@ -53,11 +53,17 @@ const Portfolio = () => {
       }
 
       init() {
-        if (!this.svg) return;
-        this.startRandomLightning();
+        if (!this.svg) {
+          console.log('SVG not found!');
+          return;
+        }
+        console.log('Lightning SVG found, initializing...');
         
-        // Create initial demonstration strikes
-        setTimeout(() => this.createDemoStrikes(), 2000);
+        // Start with initial lightning
+        setTimeout(() => this.createInitialLightning(), 2000);
+        
+        // Start random lightning generation
+        this.startRandomLightning();
       }
 
       // Generate realistic jagged lightning path
@@ -141,6 +147,8 @@ const Portfolio = () => {
 
       // Create complete lightning bolt with branches
       createLightningBolt(startX, startY, endX, endY, duration = 5) {
+        console.log('Creating lightning bolt:', { startX, startY, endX, endY, duration });
+        
         // Generate main lightning path
         const mainPath = this.generateLightningPath(startX, startY, endX, endY, 10 + Math.floor(Math.random() * 8));
         
@@ -151,6 +159,7 @@ const Portfolio = () => {
         mainBolt.style.animation = `lightning-flash ${duration}s ease-in-out`;
         
         this.svg.appendChild(mainBolt);
+        console.log('Main bolt added to SVG');
         
         // Generate branches
         const numBranches = 1 + Math.floor(Math.random() * 4);
@@ -202,29 +211,29 @@ const Portfolio = () => {
         }
       }
 
-      // Create demo strikes
-      createDemoStrikes() {
-        const strikes = [
-          { delay: 0, pos: [0.2, 0.7] },
-          { delay: 3000, pos: [0.6, 0.8] },
-          { delay: 6000, pos: [0.9, 0.6] }
+      // Create initial demonstration lightning
+      createInitialLightning() {
+        const positions = [
+          { x: 0.15, y: 0.4 },
+          { x: 0.5, y: 0.5 },
+          { x: 0.85, y: 0.45 }
         ];
         
-        strikes.forEach(strike => {
+        positions.forEach((pos, index) => {
           setTimeout(() => {
             if (this.isActive) {
-              const startX = strike.pos[0] * window.innerWidth;
+              const startX = pos.x * window.innerWidth;
               const startY = 0;
-              const endX = startX + (Math.random() - 0.5) * 100;
-              const endY = strike.pos[1] * window.innerHeight;
+              const endX = startX + (Math.random() - 0.5) * 150;
+              const endY = pos.y * window.innerHeight;
               
-              this.createLightningBolt(startX, startY, endX, endY);
+              this.createLightningBolt(startX, startY, endX, endY, 4 + Math.random() * 2);
             }
-          }, strike.delay);
+          }, index * 1500);
         });
       }
 
-      // Create random lightning
+      // Create random lightning strike
       createRandomLightning() {
         if (!this.isActive) return;
         
@@ -236,23 +245,26 @@ const Portfolio = () => {
         this.createLightningBolt(startX, startY, endX, endY, 4 + Math.random() * 3);
       }
 
-      // Start random lightning
+      // Start random lightning generation
       startRandomLightning() {
         const createRandom = () => {
-          if (this.isActive && !this.stormMode) {
+          if (this.isActive) {
             this.createRandomLightning();
           }
           
-          const nextStrike = this.stormMode ? 500 + Math.random() * 1000 : 8000 + Math.random() * 12000;
+          // Schedule next lightning (8-15 seconds)
+          const nextStrike = 8000 + Math.random() * 7000;
           setTimeout(createRandom, nextStrike);
         };
         
-        setTimeout(createRandom, 10000);
+        // Start after initial lightning
+        setTimeout(createRandom, 12000);
       }
     }
 
     // Initialize lightning
     const lightning = new RealisticLightning();
+    console.log('Lightning initialized:', lightning);
 
     // Cleanup on unmount
     return () => {
@@ -502,9 +514,9 @@ const experience = [
         .animate-visible { opacity: 1; transform: translateY(0); transition: all 0.6s ease-out; }
 
         .mesh-background {
-        background-color: ${isDarkMode ? '#0a0a0a' : '#f5f5f5'};
+        background-color: ${isDarkMode ? '#1a1a1a' : '#f5f5f5'};
         background-image: 
-      radial-gradient(ellipse at center, ${isDarkMode ? '#0a0a0a' : '#f5f5f5'} 0%, ${isDarkMode ? '#000000' : '#e5e5e5'} 100%);
+      radial-gradient(ellipse at center, ${isDarkMode ? 'rgba(255, 215, 0, 0.1)' : 'rgba(255, 215, 0, 0.05)'} 0%, transparent 70%);
     }
 
   .thunder-container {
@@ -527,7 +539,7 @@ const experience = [
   }
 
   .lightning-bolt {
-    stroke: ${isDarkMode ? 'rgba(255, 255, 150, 1)' : 'rgba(70, 70, 70, 0.9)'};
+    stroke: rgba(255, 215, 0, 0.9);
     stroke-width: 3;
     fill: none;
     stroke-linecap: round;
@@ -537,7 +549,7 @@ const experience = [
   }
 
   .lightning-branch {
-    stroke: ${isDarkMode ? 'rgba(255, 255, 150, 1)' : 'rgba(70, 70, 70, 0.9)'};
+    stroke: rgba(255, 215, 0, 0.7);
     stroke-width: 1.5;
     fill: none;
     stroke-linecap: round;
@@ -553,7 +565,7 @@ const experience = [
     }
     1%, 3% {
       opacity: 1;
-      stroke: ${isDarkMode ? 'rgba(255, 255, 255, 0.9)' : 'rgba(100, 100, 100, 0.6)'};
+      stroke: rgba(255, 255, 255, 0.95);
       stroke-width: 5;
     }
     2% {
@@ -577,7 +589,7 @@ const experience = [
     }
     1.5%, 3.5% {
       opacity: 0.8;
-      stroke: ${isDarkMode ? 'rgba(255, 255, 255, 0.9)' : 'rgba(100, 100, 100, 0.6)'};
+      stroke: rgba(255, 255, 255, 0.8);
       stroke-width: 2.5;
     }
     2.5% {
