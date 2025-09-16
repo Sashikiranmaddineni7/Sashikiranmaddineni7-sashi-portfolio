@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Sashikiranmaddineni7-sashi-portfolio/static/css/main.36560380.css",
-    "main.js": "/Sashikiranmaddineni7-sashi-portfolio/static/js/main.1693fa4f.js",
+    "main.js": "/Sashikiranmaddineni7-sashi-portfolio/static/js/main.177caa73.js",
     "index.html": "/Sashikiranmaddineni7-sashi-portfolio/index.html",
     "main.36560380.css.map": "/Sashikiranmaddineni7-sashi-portfolio/static/css/main.36560380.css.map",
-    "main.1693fa4f.js.map": "/Sashikiranmaddineni7-sashi-portfolio/static/js/main.1693fa4f.js.map"
+    "main.177caa73.js.map": "/Sashikiranmaddineni7-sashi-portfolio/static/js/main.177caa73.js.map"
   },
   "entrypoints": [
     "static/css/main.36560380.css",
-    "static/js/main.1693fa4f.js"
+    "static/js/main.177caa73.js"
   ]
 }
