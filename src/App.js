@@ -171,7 +171,7 @@ const Portfolio = () => {
         const mainBolt = document.createElementNS('http://www.w3.org/2000/svg', 'path');
         mainBolt.setAttribute('d', mainPath);
         mainBolt.setAttribute('class', 'lightning-bolt');
-        mainBolt.style.animation = `lightning-flash ${duration}s ease-in-out`;
+        mainBolt.style.animation = `lightning-flash ${duration}s ease-in-out infinite`;
         
         this.svg.appendChild(mainBolt);
         console.log('Main bolt added to SVG');
@@ -185,7 +185,7 @@ const Portfolio = () => {
           const branch = document.createElementNS('http://www.w3.org/2000/svg', 'path');
           branch.setAttribute('d', branchPath);
           branch.setAttribute('class', 'lightning-branch');
-          branch.style.animation = `branch-flash ${duration}s ease-in-out`;
+          branch.style.animation = `branch-flash ${duration}s ease-in-out infinite`;
           branch.style.animationDelay = `${0.1 + index * 0.05}s`;
           
           this.svg.appendChild(branch);
@@ -557,65 +557,73 @@ const experience = [
 
   .lightning-bolt {
     stroke: rgba(255, 255, 0, 1);
-    stroke-width: 4;
+    stroke-width: 6;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
     filter: url(#glow);
-    opacity: 0;
+    opacity: 0.8;
   }
 
   .lightning-branch {
     stroke: rgba(255, 255, 0, 0.8);
-    stroke-width: 2;
+    stroke-width: 3;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
     filter: url(#glow);
-    opacity: 0;
+    opacity: 0.6;
   }
 
   @keyframes lightning-flash {
-    0%, 85%, 100% {
-      opacity: 0;
-      stroke-width: 2;
-    }
-    1%, 3% {
-      opacity: 1;
-      stroke: rgba(255, 255, 255, 1);
-      stroke-width: 8;
-    }
-    2% {
-      opacity: 0.9;
-      stroke-width: 6;
-    }
-    4%, 6% {
-      opacity: 0.6;
+    0%, 70%, 100% {
+      opacity: 0.3;
       stroke-width: 4;
     }
-    5% {
+    1%, 5% {
+      opacity: 1;
+      stroke: rgba(255, 255, 255, 1);
+      stroke-width: 12;
+    }
+    2%, 4% {
+      opacity: 0.9;
+      stroke-width: 10;
+    }
+    3% {
+      opacity: 0.95;
+      stroke-width: 11;
+    }
+    6%, 10% {
+      opacity: 0.7;
+      stroke-width: 6;
+    }
+    8% {
       opacity: 0.8;
-      stroke-width: 5;
+      stroke-width: 8;
     }
   }
 
   @keyframes branch-flash {
-    0%, 85%, 100% {
-      opacity: 0;
-      stroke-width: 1;
+    0%, 70%, 100% {
+      opacity: 0.2;
+      stroke-width: 2;
     }
-    1.5%, 3.5% {
+    1.5%, 5.5% {
       opacity: 0.8;
       stroke: rgba(255, 255, 255, 0.9);
-      stroke-width: 4;
+      stroke-width: 6;
     }
-    2.5% {
+    2.5%, 4.5% {
       opacity: 0.7;
-      stroke-width: 3;
+      stroke-width: 5;
     }
-    4.5% {
+    3.5% {
+      opacity: 0.75;
+      stroke-width: 5.5;
+    }
+    6.5%, 10.5% {
       opacity: 0.4;
-      stroke-width: 2;
+      stroke-width: 3;
     }
   }
 
