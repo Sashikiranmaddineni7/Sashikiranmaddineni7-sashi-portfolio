@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sashi Kiran — AI/ML Engineer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Geist+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ═══════ NAV ═══════ -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-icon">SK</div>
+      <span>Sashi Kiran</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+    <button class="mobile-menu-btn"
+      onclick="this.parentElement.querySelector('.nav-links').style.display = this.dataset.open ? 'none' : 'flex'; this.dataset.open = !this.dataset.open;">☰</button>
+  </nav>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-glow hero-glow--1"></div>
+    <div class="hero-glow hero-glow--2"></div>
+
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Open to opportunities
+    </div>
+
+    <h1><span style="white-space:nowrap;display:block;">Sashi Kiran Maddineni</span><em
+        style="font-size:0.5em;">Exploring AI, ML &amp; Data Science</em></h1>
+
+    <p class="hero-sub">
+      I build intelligent knowledge graphs, advanced LLM architectures, and predictive models that solve real-world
+      problems.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">View Projects <span class="btn-arrow">→</span></a>
+      <a href="#contact" class="btn btn-ghost">Contact Me</a>
+    </div>
+
+    <!-- ── Product Mockup ── -->
+    <div class="hero-mockup">
+      <div class="mockup-window">
+        <div class="mockup-titlebar">
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <div class="mockup-dot"></div>
+          <span>analytics-dashboard.app</span>
+        </div>
+        <div class="mockup-body">
+          <!-- Sidebar -->
+          <div class="mockup-sidebar">
+            <div class="mockup-sidebar-label">Navigation</div>
+            <div class="mockup-nav-item active">
+              <div class="mockup-nav-icon"></div> Dashboard
+            </div>
+            <div class="mockup-nav-item">
+              <div class="mockup-nav-icon"></div> Pipelines
+            </div>
+            <div class="mockup-nav-item">
+              <div class="mockup-nav-icon"></div> Models
+            </div>
+            <div class="mockup-nav-item">
+              <div class="mockup-nav-icon"></div> Reports
+            </div>
+            <div class="mockup-nav-item">
+              <div class="mockup-nav-icon"></div> Settings
+            </div>
+
+            <div class="mockup-sidebar-label" style="margin-top:1.25rem;">Recent</div>
+            <div class="mockup-nav-item">
+              <div class="mockup-nav-icon"></div> LLM Pipeline
+            </div>
+            <div class="mockup-nav-item">
+              <div class="mockup-nav-icon"></div> Knowledge Graph
+            </div>
+          </div>
+
+          <!-- Main -->
+          <div class="mockup-main">
+            <div class="mockup-main-header">
+              <span class="mockup-main-title">Model Serving Analytics</span>
+              <span class="mockup-badge">● Live</span>
+            </div>
+
+            <div class="mockup-chart">
+              <div class="mockup-chart-label">Monthly throughput — records processed (M)</div>
+              <div class="chart-bars" id="chartBars"></div>
+            </div>
+
+            <div class="mockup-stat-row">
+              <div class="mockup-stat">
+                <div class="mockup-stat-value" style="color:var(--green)">99.7%</div>
+                <div class="mockup-stat-label">Pipeline uptime</div>
+              </div>
+              <div class="mockup-stat">
+                <div class="mockup-stat-value" style="color:var(--accent)">2.4M</div>
+                <div class="mockup-stat-label">Events / day</div>
+              </div>
+              <div class="mockup-stat">
+                <div class="mockup-stat-value" style="color:var(--violet)">12ms</div>
+                <div class="mockup-stat-label">Avg latency</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Panel -->
+          <div class="mockup-panel">
+            <div class="mockup-panel-title">AI Insights</div>
+
+            <div class="insight-card">
+              <div class="insight-tag insight-tag--alert">Alert</div>
+              <div class="insight-text">Inference latency spiked 18% in Cloud Run deployment. Review FastAPI serving
+                container.</div>
+              <div class="insight-time">2m ago</div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-tag insight-tag--info">Insight</div>
+              <div class="insight-text">RAG query understanding accuracy improved to 92.4% after latest knowledge graph
+                enhancement.
+              </div>
+              <div class="insight-time">15m ago</div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-tag insight-tag--success">Complete</div>
+              <div class="insight-text">Model deployment to Kubernetes cluster finished. All 47 tests passing.</div>
+              <div class="insight-time">1h ago</div>
+            </div>
+
+            <div class="insight-card">
+              <div class="insight-tag insight-tag--info">Suggestion</div>
+              <div class="insight-text">Consider optimizing the PyTorch tensor memory allocation — inference time would
+                drop ~40%.
+              </div>
+              <div class="insight-time">3h ago</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROBLEMS ═══════ -->
+  <div class="section-divider"></div>
+  <section id="about" class="problems">
+    <div class="section-label reveal">What I solve</div>
+    <h2 class="section-heading reveal">Your data isn't failing at scale.<br>It fails before scale — in the <em
+        style="font-family:var(--serif);font-style:italic;color:var(--accent);">foundation.</em></h2>
+    <p class="section-desc reveal">Most AI problems aren't about the models. They're structural — disconnected data,
+      fragile
+      pipelines, and hallucinations nobody trusts.</p>
+
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">🔀</div>
+        <h3>Disconnected knowledge, poor entity resolution</h3>
+        <p>Data lives in silos without semantic understanding. AI models struggle to provide accurate answers because
+          the underlying context is fragmented.</p>
+        <div class="problem-visual">
+          <div style="display:flex;flex-direction:column;gap:0.4rem;flex:1;">
+            <div style="display:flex;gap:0.3rem;align-items:center;">
+              <span
+                style="background:var(--rose-soft);color:var(--rose);padding:0.15rem 0.4rem;border-radius:3px;font-size:0.6rem;">CSV</span>
+              <span style="flex:1;height:1px;background:var(--border);"></span>
+              <span style="font-size:0.6rem;">→</span>
+            </div>
+            <div style="display:flex;gap:0.3rem;align-items:center;">
+              <span
+                style="background:var(--amber-soft);color:var(--amber);padding:0.15rem 0.4rem;border-radius:3px;font-size:0.6rem;">API</span>
+              <span style="flex:1;height:1px;background:var(--border);"></span>
+              <span style="font-size:0.6rem;">→</span>
+            </div>
+            <div style="display:flex;gap:0.3rem;align-items:center;">
+              <span
+                style="background:var(--accent-soft);color:var(--accent);padding:0.15rem 0.4rem;border-radius:3px;font-size:0.6rem;">DB</span>
+              <span style="flex:1;height:1px;background:var(--border);"></span>
+              <span style="font-size:0.6rem;">→</span>
+            </div>
+          </div>
+          <div style="text-align:center;">
+            <div
+              style="width:48px;height:48px;border-radius:8px;background:var(--green-soft);display:flex;align-items:center;justify-content:center;font-size:0.85rem;margin:0 auto;">
+              ✓</div>
+            <span style="font-size:0.55rem;color:var(--green);margin-top:0.25rem;display:block;">Unified</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card reveal">
+        <div class="problem-icon">🧩</div>
+        <h3>Fragile ML infrastructure that breaks at scale</h3>
+        <p>Every deployment feels like a gamble. Models are pushed to production with no monitoring, no
+          scaling strategy, and unpredictable latencies.</p>
+        <div class="problem-visual">
+          <div class="pv-bar-group">
+            <div class="pv-bar" style="height:35px;background:var(--violet);"></div>
+            <div class="pv-bar pv-bar--grow" style="height:15px;background:var(--rose);"></div>
+            <div class="pv-bar" style="height:25px;background:var(--violet);"></div>
+            <div class="pv-bar pv-bar--grow" style="height:10px;background:var(--rose);"></div>
+            <div class="pv-bar" style="height:40px;background:var(--violet);"></div>
+            <div class="pv-bar" style="height:20px;background:var(--violet);"></div>
+          </div>
+          <div style="flex:1;">
+            <div style="font-size:0.65rem;color:var(--rose);margin-bottom:0.2rem;">● 2 failures / week</div>
+            <div style="font-size:0.65rem;color:var(--green);">→ 0 with monitoring</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-card reveal">
+        <div class="problem-icon">📉</div>
+        <h3>AI tools that look smart but hallucinate</h3>
+        <p>Models generate confident but incorrect answers. Users nod politely then abandon the tool because it lacks
+          domain-specific guardrails.</p>
+        <div class="problem-visual">
+          <div style="display:flex;flex-direction:column;gap:0.35rem;flex:1;">
+            <div style="display:flex;justify-content:space-between;font-size:0.6rem;">
+              <span>Vanity metrics</span>
+              <span style="color:var(--rose);">✗</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.6rem;">
+              <span style="color:var(--green);">Actionable insights</span>
+              <span style="color:var(--green);">✓</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.6rem;">
+              <span style="color:var(--green);">Decision framework</span>
+              <span style="color:var(--green);">✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SKILLS ═══════ -->
+  <div class="section-divider"></div>
+  <section id="skills">
+    <div class="skills-section">
+      <div class="section-label reveal">Expertise</div>
+      <h2 class="section-heading reveal">Built across the full data stack</h2>
+      <p class="section-desc reveal">From ingestion to insight — I own the pipeline end to end.</p>
+
+      <div class="skills-grid">
+        <div class="skill-block reveal">
+          <div class="skill-block-header">
+            <h3>Machine Learning & AI</h3>
+            <span class="skill-block-level level-expert">Expert</span>
+          </div>
+          <p>Designing LLM architectures, Knowledge Graphs, advanced RAG systems, and deploying predictive models at
+            scale.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-tag">PyTorch</span>
+            <span class="skill-tag">TensorFlow</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">LLMs (Llama3)</span>
+            <span class="skill-tag">NLP</span>
+            <span class="skill-tag">Scikit-learn</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal">
+          <div class="skill-block-header">
+            <h3>Data Engineering</h3>
+            <span class="skill-block-level level-expert">Expert</span>
+          </div>
+          <p>Building fault-tolerant ETL pipelines, scalable data lakes, and optimizing data processing for machine
+            learning.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">PySpark</span>
+            <span class="skill-tag">Hadoop</span>
+            <span class="skill-tag">Hive</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal">
+          <div class="skill-block-header">
+            <h3>Cloud & MLOps</h3>
+            <span class="skill-block-level level-advanced">Advanced</span>
+          </div>
+          <p>Cloud-native AI platforms, containerized model serving, scalable inferences, and cost-optimized
+            orchestration.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">GCP</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Azure</span>
+            <span class="skill-tag">Kubernetes</span>
+            <span class="skill-tag">FastAPI</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal">
+          <div class="skill-block-header">
+            <h3>Analytics & Visualization</h3>
+            <span class="skill-block-level level-advanced">Advanced</span>
+          </div>
+          <p>Exploratory data analysis, statistical modeling, graph-based analytics, and building robust stakeholder
+            dashboards.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Power BI</span>
+            <span class="skill-tag">Pandas</span>
+            <span class="skill-tag">Statistical Analysis</span>
+            <span class="skill-tag">Tableau</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROJECTS ═══════ -->
+  <div class="section-divider"></div>
+  <section id="projects">
+    <div class="projects-section">
+      <div class="section-label reveal">Selected Work</div>
+      <h2 class="section-heading reveal">Projects that moved the needle</h2>
+      <p class="section-desc reveal">Real outcomes from real data problems.</p>
+
+      <div class="project-cards">
+        <div class="project-card reveal">
+          <div>
+            <div class="project-meta">
+              <span class="project-meta-type">Agentic AI</span>
+              <span class="project-meta-year">2024</span>
+            </div>
+            <h3>ALFA – Agentic AI Agent</h3>
+            <p>Built an AI Agent with LangGraph using Copilot to secure data, enable NL queries, integrate REST APIs,
+              and enforce RBAC/guardrails.</p>
+            <div class="project-tags">
+              <span>LangGraph</span><span>Copilot</span><span>REST APIs</span><span>Python</span>
+            </div>
+          </div>
+          <div class="project-preview">
+            <div class="project-preview-inner pp-1">
+              <div class="pp-mini-chart">
+                <div class="pp-bar" style="height:20px;background:var(--accent);opacity:0.4;"></div>
+                <div class="pp-bar" style="height:30px;background:var(--accent);opacity:0.5;"></div>
+                <div class="pp-bar" style="height:25px;background:var(--accent);opacity:0.6;"></div>
+                <div class="pp-bar" style="height:40px;background:var(--accent);opacity:0.7;"></div>
+                <div class="pp-bar" style="height:35px;background:var(--accent);opacity:0.8;"></div>
+                <div class="pp-bar" style="height:45px;background:var(--accent);opacity:0.9;"></div>
+                <div class="pp-bar" style="height:50px;background:var(--accent);"></div>
+              </div>
+              <span>100% Secure via RBAC</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div>
+            <div class="project-meta">
+              <span class="project-meta-type">LLMs & RAG</span>
+              <span class="project-meta-year">2024</span>
+            </div>
+            <h3>NLP / Knowledge Graphs</h3>
+            <p>Built an NLP system with LLM architecture and advanced RAG integrated with knowledge graphs, achieving
+              92% query understanding accuracy.</p>
+            <div class="project-tags">
+              <span>Python</span><span>LLMs</span><span>RAG</span><span>Knowledge Graphs</span><span>SQL</span>
+            </div>
+          </div>
+          <div class="project-preview">
+            <div class="project-preview-inner pp-2">
+              <div style="font-size:2rem;font-family:var(--serif);color:var(--violet);">92%</div>
+              <span>Query accuracy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div>
+            <div class="project-meta">
+              <span class="project-meta-type">Predictive Modeling</span>
+              <span class="project-meta-year">2023</span>
+            </div>
+            <h3>Cryptocurrency Market Analysis Engine</h3>
+            <p>Modeled market relationships as graph structures with Gini and Kolkata indices, improving cryptocurrency
+              price prediction accuracy by 25%.</p>
+            <div class="project-tags">
+              <span>Python</span><span>Graph Theory</span><span>Statistical Modeling</span><span>Pandas</span>
+            </div>
+          </div>
+          <div class="project-preview">
+            <div class="project-preview-inner pp-3">
+              <div style="font-size:2rem;font-family:var(--serif);color:var(--amber);">+25%</div>
+              <span>Prediction accuracy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div>
+            <div class="project-meta">
+              <span class="project-meta-type">Data Engineering</span>
+              <span class="project-meta-year">2022</span>
+            </div>
+            <h3>End-to-End Data Management Pipeline</h3>
+            <p>Designed a pipeline processing 100GB+ healthcare claims data using Hadoop/Spark/Hive, cutting payment
+              collection time & achieving 95% accuracy.</p>
+            <div class="project-tags">
+              <span>Hadoop</span><span>Spark</span><span>Hive</span><span>Azure</span>
+            </div>
+          </div>
+          <div class="project-preview">
+            <div class="project-preview-inner pp-4">
+              <div style="font-size:2rem;font-family:var(--serif);color:var(--green);">-30%</div>
+              <span>Processing time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ EXPERIENCE ═══════ -->
+  <div class="section-divider"></div>
+  <section id="experience">
+    <div class="experience-section">
+      <div class="section-label reveal">Career</div>
+      <h2 class="section-heading reveal">Where I've built and shipped</h2>
+
+      <div class="exp-grid">
+        <div class="exp-timeline">
+          <div class="exp-item reveal">
+            <div class="exp-date">Feb 2025 — Present</div>
+            <h3>Machine Learning Engineer</h3>
+            <div class="exp-company"></div>
+            <p>Developed entity-level connections between LLM outputs to enrich knowledge graph structures, trained
+              models on GCP with PyTorch, and deployed pipelines on Kubernetes Cloud Run integrated with GCS. Optimized
+              serving with FastAPI, improving latency by 30%.</p>
+          </div>
+          <div class="exp-item reveal">
+            <div class="exp-date">Mar 2024 — Jun 2024</div>
+            <h3>AI Intern / Open Source Contributor</h3>
+            <div class="exp-company"></div>
+            <p>Fine-tuned Llama3 chatbot with entity recognition and semantic matching for knowledge-based query
+              resolution. Designed scalable ML models with 90% deployment success and built an AI-powered SQL agent
+              using Copilot.</p>
+          </div>
+          <div class="exp-item reveal">
+            <div class="exp-date">Mar 2021 — Dec 2022</div>
+            <h3>Programmer Analyst / Data Scientist</h3>
+            <div class="exp-company">Cognizant Technology & Solutions</div>
+            <p>Built ETL pipelines with Python/Spark (98.7% accuracy), developed predictive models improving KPI
+              forecasting by 20%, optimized real-time processing with PySpark & Kafka, and delivered insights via Power
+              BI.</p>
+          </div>
+        </div>
+
+        <div class="exp-right">
+          <div class="exp-stat-card reveal">
+            <div class="exp-stat-val">3+</div>
+            <div class="exp-stat-label">Years in AI/Data</div>
+            <div class="exp-stat-detail">Developing predictive models and scalable ML architectures.</div>
+          </div>
+          <div class="exp-stat-card reveal">
+            <div class="exp-stat-val">15+</div>
+            <div class="exp-stat-label">ML Pipelines Shipped</div>
+            <div class="exp-stat-detail">Models serving predictions in production via robust ETL systems.</div>
+          </div>
+          <div class="exp-stat-card reveal">
+            <div class="exp-stat-val">4</div>
+            <div class="exp-stat-label">Certifications</div>
+            <div class="exp-stat-detail">AWS, Oracle Cloud, IBM, and CAP certified analytical professional.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TRUST / APPROACH ═══════ -->
+  <div class="section-divider"></div>
+  <section>
+    <div class="trust-section">
+      <div class="section-label reveal">How I Work</div>
+      <h2 class="section-heading reveal">Built for reliable, production-grade delivery</h2>
+      <p class="section-desc reveal">Every project follows principles that keep systems running and stakeholders
+        confident.</p>
+
+      <div class="trust-grid">
+        <div class="trust-card reveal">
+          <div class="trust-icon">🧪</div>
+          <h3>Tested & Monitored</h3>
+          <p>Every pipeline ships with automated tests, data quality checks, and observability from day one.</p>
+          <ul class="trust-list">
+            <li>Great Expectations / dbt tests</li>
+            <li>Pipeline SLAs and alerting</li>
+            <li>Automated data freshness checks</li>
+          </ul>
+        </div>
+        <div class="trust-card reveal">
+          <div class="trust-icon">📐</div>
+          <h3>Documented & Reproducible</h3>
+          <p>Clean code, version control, and documentation that lets anyone pick up where I left off.</p>
+          <ul class="trust-list">
+            <li>Git-based workflows</li>
+            <li>Containerized environments</li>
+            <li>Self-documenting pipelines</li>
+          </ul>
+        </div>
+        <div class="trust-card reveal">
+          <div class="trust-icon">🤝</div>
+          <h3>Collaborative & Transparent</h3>
+          <p>I translate between technical and business — keeping stakeholders in the loop without the jargon.</p>
+          <ul class="trust-list">
+            <li>Async-first communication</li>
+            <li>Weekly progress artifacts</li>
+            <li>Clear scope and timeline docs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <div class="section-divider"></div>
+  <section id="faq">
+    <div class="faq-section">
+      <div class="section-label reveal" style="justify-content:center;">Questions & Answers</div>
+      <h2 class="section-heading reveal" style="margin:0 auto;">Frequently asked</h2>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            What kind of data projects do you take on?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>I work across the full AI/ML lifecycle — from building data pipelines and knowledge graphs to creating
+              predictive models and reliable LLM applications. I specialize in turning fragmented data into robust
+              intelligence.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            What tools and technologies do you work with?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Python, SQL, PyTorch, TensorFlow, LangChain, Kafka, Cloud Providers (AWS/GCP), and FastAPI. I pick the
+              right tool for the job to ensure scalable and reliable ML production systems.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            Do you work with startups or enterprises?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Both. I've built AI infrastructure for open-source AI projects, and
+              I've delivered complex ML pipelines inside large enterprise environments with heavy governance
+              requirements.
+            </p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            Can you work with my existing team and tools?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. I integrate into existing workflows, adopt your team's coding standards, and document
+              everything so the work lives on after my engagement ends. No vendor lock-in to my methods.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal">
+          <button class="faq-question">
+            What does a typical engagement look like?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>We start with a discovery call to understand your data landscape and goals. From there, I scope the work,
+              define milestones, and deliver iteratively — usually with weekly check-ins and async updates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA ═══════ -->
+  <div class="section-divider"></div>
+  <section id="contact" style="padding-top:5rem;padding-bottom:5rem;">
+    <div class="cta-banner">
+      <div class="cta-bg"></div>
+      <div class="section-label reveal" style="justify-content:center;">Let's talk</div>
+      <h2 class="cta-heading reveal">See how data can drive<br>your next decision.</h2>
+      <p class="cta-sub reveal">Whether it's a pipeline rebuild, a new dashboard, or an ML proof-of-concept — let's
+        explore what's possible.</p>
+      <div class="reveal">
+        <a href="mailto:sashikiranm7@gmail.com" class="btn btn-primary">Get in Touch <span
+            class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:0.5rem;">
+        <div class="nav-brand-icon" style="width:24px;height:24px;font-size:0.65rem;border-radius:6px;">SK</div>
+        <span style="font-weight:500;font-size:0.9rem;">Sashi Kiran</span>
+      </div>
+      <p>AI/ML Engineer specializing in predictive modeling, NLP, and scalable architectures.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+    </div>
+    <div class="footer-col">
+      <h4>Social</h4>
+      <a href="https://www.linkedin.com/in/sashi7/" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Sashikiranmaddineni7" target="_blank">GitHub</a>
+      <a href="https://x.com/sashikiranm7" target="_blank">X / Twitter</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:sashikiranm7@gmail.com">sashikiranm7@gmail.com</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">
+    <span>© 2026 Sashi Kiran</span>
+    <span>Built with data & precision</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
